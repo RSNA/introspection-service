@@ -5,4 +5,4 @@ services:
     ports:
      - "9004:5000"
     environment:
-     - API_SERVER=https://portal.demo.syncfor.science/api/fhir
+     - API_SERVER=https://portal-stu3.demo.syncfor.science/api/fhir

@@ -20,22 +20,26 @@ BP = Blueprint('api', __name__, url_prefix='/api')
 def api_fhir_metadata():
     fhir_base = current_app.config['API_SERVER']
     token = request.form['token']
-    patient = request.form['patient']
+    try:
+        patient = request.form['patient']
+    except KeyError:
+        patient = ""
 
-    patient_fhir = requests.get(fhir_base + '/Patient/' + patient, headers={
+    request_url = fhir_base + '/Patient/' + patient
+    patient_fhir = requests.get(request_url, headers={
         'Accept': 'application/fhir+json',
         'Authorization': 'Bearer ' + token
     })
 
     if patient_fhir.status_code == 200:
         return jsonify({
-            'introspected': fhir_base,
+            'introspected': request_url,
             'active': True,
             'patient': patient_fhir.json(),
             'scope': 'Patient/*.read'
         })
     else:
         return jsonify({
-            'introspected': fhir_base,
+            'introspected': request_url,
             'active': False
         })
