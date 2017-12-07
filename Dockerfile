@@ -15,9 +15,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /usr/src/app
 
+EXPOSE 5000
+
 # Set the environment
 ENV FLASK_APP /usr/src/app/app.py
-ENV API_SERVER http://api:8080/baseDstu2
-ENV API_SERVER_NAME 'Mainline Clinic'
+ENV API_SERVER https://portal-stu3.demo.syncfor.science/api/fhir
+ENV API_SERVER_NAME 'SMART STU-3 PORTAL'
 
 CMD ["supervisord", "-c", "supervisord.conf"]
