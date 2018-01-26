@@ -19,7 +19,7 @@ Test your connection using the CuRL command:
 ```
 curl -d "token=<token value>&patient=<fhir pid>" -X POST http://localhost:9004/api/introspect
 ```
-where the \<token\> and \<patient-id\> values must be known to the API server referenced in the Dockerfile. The patient parameter is optional.
+where the \<token\> and \<patient-id\> values must be known to the API server referenced in the Dockerfile.
 
 ## Installation
 

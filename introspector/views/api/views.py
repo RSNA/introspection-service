@@ -19,11 +19,9 @@ BP = Blueprint('api', __name__, url_prefix='/api')
 @BP.route('/introspect', methods=['POST'])
 def api_fhir_metadata():
     fhir_base = current_app.config['API_SERVER']
+
+    patient = request.form['patient']
     token = request.form['token']
-    try:
-        patient = request.form['patient']
-    except KeyError:
-        patient = ""
 
     request_url = fhir_base + '/Patient/' + patient
     patient_fhir = requests.get(request_url, headers={
