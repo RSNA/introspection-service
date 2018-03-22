@@ -1,3 +1,6 @@
+#Project archived - See https://github.com/sync-for-science/token-introspector for replacement.
+
+
 # Token Introspector
 
 An implementation of OAuth 2.0 Token Introspection specific to SMART on FHIR.
